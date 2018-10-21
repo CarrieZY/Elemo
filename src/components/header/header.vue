@@ -44,7 +44,7 @@
                         <div class="line"></div>
                     </div>
                     <ul v-if="seller.supports" class="supports">
-                        <li class="support-item" v-for="(item,index) in seller.supports" key="index">
+                        <li class="support-item" v-for="(item,index) in seller.supports" :key="index">
                         <span class="icon" :class="classMap[seller.supports[index].type]"></span>
                         <span class="text">{{seller.supports[index].description}}</span>
                         </li>
@@ -104,6 +104,7 @@ export default {
         color:#fff
         background rgba(7,17, 27, .5)
         font-size 0
+        z-index 50
         .content-warpper
             position relative
             padding 24px 12px 18px 24px
