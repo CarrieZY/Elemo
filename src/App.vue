@@ -2,7 +2,7 @@
   <div id="app">
     <header-top :seller="seller"></header-top>
     <tab></tab>
-    <router-view/>
+      <router-view :seller="seller"/>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   },
   data(){
     return {
-      seller :{}
+      seller:{}
     }
   },
   created(){

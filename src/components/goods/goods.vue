@@ -30,24 +30,30 @@
                                     <span class="now">{{'￥'+food.price}}</span>
                                     <span v-show="food.oldPrice" class="old">{{'￥'+food.oldPrice}}</span>
                                 </div>
+                                <div class="cartcontrol-wrapper">
+                                    <cartcontrol :food="food"></cartcontrol>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <shopcart></shopcart>
+        <shopcart :setctfood="setctfood"
+         :deliveryPrice="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
     </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
 import shopcart from 'components/shopcart/shopcart'
+import cartcontrol from 'components/cartcontrol/cartcontrol'
 import axios from 'axios'
 export default {
     name:'goods',
     components:{
-        shopcart
+        shopcart,
+        cartcontrol
     },
     props:{
         seller:{
@@ -81,6 +87,7 @@ export default {
         },
         initScroll(){
              this.scroll=new BScroll(this.$refs.foodWrapper,{
+                 click:true,
                  probeType:3
              })
              this.menuScroll= new BScroll(this.$refs.menuWrapper,{
@@ -117,6 +124,17 @@ export default {
             }
             }
             return 0;
+        },
+        setctfood(){
+            let foods = [];
+            this.goods.forEach((good) =>{
+                good.foods.forEach((food)=>{
+                    if(food.count){
+                        foods.push(food)
+                    }
+                })
+            })
+            return  foods
         }
     }
 }
@@ -128,18 +146,20 @@ export default {
     display flex
     width:100%
     position:absolute
-    top:174px 
+    top:178px 
     bottom 46px
     overflow hidden
-    .menu-warpper
+    .menu-warpper  
         flex 0 0 80px
         background:#f3f5f7
         width:80px
         .menu-item
-            display table
+            display flex
+            vertical-align middle
+            align-items center
             height:54px
             width:56px
-            line-height:14px 
+            line-height:14px
             padding 0 12px 
             &.current
                 position relative
@@ -226,5 +246,9 @@ export default {
                         font-weight 700
                         line-height:24px
 
-    // .scoped
+                .cartcontrol-wrapper
+                    position:absolute
+                    right 0
+                    bottom 16px
+                  
 </style>

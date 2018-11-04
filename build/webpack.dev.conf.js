@@ -12,7 +12,7 @@ const portfinder = require('portfinder')
 // 添加mock 数据
 const express = require('express')
 const app = express()
-var appData = require('../data.json')//加载本地数据文件
+var appData = require('../static/data.json')//加载本地数据文件
 var seller=appData.seller;
 var goods=appData.goods;
 var ratings=appData.ratings;

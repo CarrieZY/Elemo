@@ -104,7 +104,7 @@ export default {
         color:#fff
         background rgba(7,17, 27, .5)
         font-size 0
-        z-index 50
+        z-index 100
         .content-warpper
             position relative
             padding 24px 12px 18px 24px
