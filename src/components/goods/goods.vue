@@ -15,7 +15,7 @@
                 <li v-for="(item,index) in goods" :key="index" class="food-list food-list-hook">
                     <p class="title">{{item.name}}</p>
                     <ul>
-                        <li v-for="(food ,index) in item.foods" :key="index" class="food-item border-1px">
+                        <li @click="selectFood(food,$event)" v-for="(food ,index) in item.foods" :key="index" class="food-item border-1px">
                             <div class="icon">
                                 <img :src="food.icon" width="57" height="57">
                             </div>
@@ -41,6 +41,7 @@
         </div>
         <shopcart :setctfood="setctfood"
          :deliveryPrice="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+         <food :food="setctedfood" ref="food"></food>
     </div>
 </template>
 
@@ -48,12 +49,14 @@
 import BScroll from 'better-scroll'
 import shopcart from 'components/shopcart/shopcart'
 import cartcontrol from 'components/cartcontrol/cartcontrol'
+import food from 'components/food/food'
 import axios from 'axios'
 export default {
     name:'goods',
     components:{
         shopcart,
-        cartcontrol
+        cartcontrol,
+        food
     },
     props:{
         seller:{
@@ -64,7 +67,8 @@ export default {
         return {
         goods: [],
         listHeight: [],
-        scrollY: 0
+        scrollY: 0,
+        setctedfood:{}
       }
     },
     created(){
@@ -79,6 +83,10 @@ export default {
         this.classMap=['decrease','discount','guarantee','invoice','special']        
     },
     methods:{
+        selectFood(food,event){
+            this.setctedfood=food
+            this.$refs.food.show()
+        },
         selectMenu(index){
             console.log(index)
             let foodlist = this.$refs.foodWrapper.getElementsByClassName('food-list-hook');
