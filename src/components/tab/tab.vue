@@ -29,6 +29,6 @@ export default {
         display: block
         font-size: 14px
         color: rgb(77, 85, 93)
-        &:active
-          color: #444
+        &.active
+          color:red 
 </style>

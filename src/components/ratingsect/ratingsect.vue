@@ -1,17 +1,17 @@
 <template>
     <div class="ratingselect">
         <div class="rating-type border-1px">
-            <span class="block all">{{desc.all}}
-                <span class="count">47</span>
+            <span @click="select(2,$event)" class="block posttive" :class="{'active':selectType==2}">{{desc.all}}
+                <span class="count">{{ratings.length}}</span>
             </span>
-            <span class="block posttive">{{desc.posttive}}
-                <span class="count">40</span>
+            <span @click="select(0,$event)" class="block posttive" :class="{'active':selectType==0}">{{desc.posttive}}
+                <span class="count">{{posttives.length}}</span>
             </span>
-            <span class="block negative">{{desc.negative}}
-                <span class="count">7</span>
+            <span @click="select(1,$event)" class="block negative" :class="{'active':selectType==1}">{{desc.negative}}
+                <span class="count">{{negatives.length}}</span>
             </span>
         </div>
-        <div class="switch">
+        <div @click="toggleContent" class="switch" :class="{'on':onlyContent}">
             <span class="icon-check_circle"></span>
             <span class="text">只看有内容的评价</span>
         </div>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+const posttive=0
+const negative=1
 const all =2
 export default {
     name:'ratingsect',
@@ -47,6 +49,37 @@ export default {
                 }
             }
         }
+    },
+    computed:{
+        //计算满意的数量
+        posttives(){
+            return this.ratings.filter((rating) =>{
+                return rating.rateType===posttive
+            })
+        },
+        //计算不满意的数量
+        negatives(){
+            return this.ratings.filter((rating) =>{
+                return rating.rateType===negative
+            })
+        }
+    },
+    methods:{
+        select(type,event){
+            if(!event._constructed){
+                return
+            }
+            this.selectType=type
+            //子组件告诉父组件的变化
+            this.$dispatch('ratingtype.select',type)
+        },
+        toggleContent(event){
+           if(!event._constructed){
+                return
+            } 
+            this.onlyContent= !this.onlyContent
+            this.$dispatch('content.toggle',this.onlyContent)
+        }
     }
 }
 </script>
@@ -65,7 +98,8 @@ export default {
             margin-right:8px 
             border-radius 1px
             font-size 12px
-            color:rgb(77,85,93)
+            color:rgb(77,85,93) 
+            background:rgb(0,160,220)
             &.active
                 color:#fff
             .count
@@ -80,19 +114,24 @@ export default {
                 background rgba(77,85,93,.5)
                 &.active
                  background rgb(77,85,93)    
-        .switch
-            padding 12px 18px
-            border-bottom:1px solid rgba(7,17,27,.1)
-            line-height 24px
-            color:rgb(147,159,220)
-            font-size 0
-            &.icon-check_circle
-                display inline-block
-                vertical-align top
-                font-size:24px
-                margin-right 4px
-            .text
-                font-size 12px    
+    .switch
+        padding 12px 18px
+        border-bottom:1px solid rgba(7,17,27,.1)
+        line-height 24px
+        color:rgb(147,153,159)
+        font-size 0
+        &.on
+            .icon-check_circle
+                color:#00c850
+        .icon-check_circle
+            display inline-block
+            vertical-align top
+            font-size:24px
+            margin-right 4px
+        .text
+            display inline-block
+            vertical-align top
+            font-size 12px    
 
                
 
