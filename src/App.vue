@@ -2,7 +2,10 @@
   <div id="app">
     <header-top :seller="seller"></header-top>
     <tab></tab>
+    <!-- keep=alive减少http请求  防止二次渲烂 -->
+   <keep-alive>    
       <router-view :seller="seller"/>
+    </keep-alive>
   </div>
 </template>
 

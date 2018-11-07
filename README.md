@@ -1,18 +1,28 @@
 # elemo
 
-> A Vue.js project
+> 基于Vue全家桶实现的外卖webAPP
+> 如果觉得对您有帮助，您可以在右上角给我个star支持一下，谢谢！
+
+## 项目说明
+> 用到的技术栈  
+vue2.x + vue-router2 + webpack + vue-cli3 + axios + stylus + flex 
+> 由于是个人项目  所以我没有用 eslint  个人觉得由于格式报错比较烦  
+> 但是eslint还是可以帮助及时找到报错信息的
 
 ## Build Setup
 
 ``` bash
-# install dependencies
+# 克隆项目到本地以及配置公钥
+查看文档 http://www.bootcss.com/p/git-guide/
+
+# 安装依赖  
 npm install
 
-# serve with hot reload at localhost:8080
+# 开启服务器
 npm run dev
 
 # build for production with minification
-npm run build
+npm run build   打包项目生成dist文件夹    
 
 # build for production and view the bundle analyzer report
 npm run build --report
