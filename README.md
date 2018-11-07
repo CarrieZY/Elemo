@@ -21,9 +21,10 @@ npm run build --report
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 
-##一个让人烦躁的问题
-在商家页面的商家实景图片那里   使用better-scroll的横向滚动  
-\\\
+## 一个让人烦躁的问题
+> 在商家页面的商家实景图片那里   使用better-scroll的横向滚动  
+
+```
  mounted(){
         this.$nextTick(() =>{
             this._initScroll()
@@ -68,4 +69,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
         }
     }
 
-\\\    
+
+```    
