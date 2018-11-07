@@ -71,3 +71,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 ```    
+>> 我这样做了还是不能滚动  改用swiper
