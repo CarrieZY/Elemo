@@ -28,8 +28,8 @@
                         </div>
                     </li>
                 </ul>
-                <div class="favorite">
-                    <span class="icon-favorite"></span>
+                <div class="favorite" @click="toggleFavorite">
+                    <span class="icon-favorite"  :class="{'active':favorite}"></span>
                     <span class="text">{{favoriteText}}</span>
                 </div>
             </div>
@@ -49,8 +49,8 @@
             <split></split>
             <div class="pics">
                 <p class="title">商家实景</p>
-                <div class="pics-wrapper">
-                    <ul class="pics-list">
+                <div class="pics-wrapper" ref="picswrapper">
+                    <ul class="pics-list" ref="piclist">
                         <li class="pics-item" v-for="(pic,index) in seller.pics" :key="index">
                             <img :src="pic" width="120" height="90">
                         </li>
@@ -81,25 +81,66 @@ export default {
     },
     data(){
         return {
-            favorite :true
+            favorite:false
         }
     },
     components:{
         star,
         split
     },
+    mounted(){
+        this.$nextTick(() =>{
+            this._initScroll()
+            this._initPics()
+        })
+    },
+    watch:{
+        'seller'(){
+            this.$nextTick( () =>{
+                this._initScroll()
+                this._initPics()
+            })
+        }
+    },
     created (){
         this.classMap=['decrease','discount','guarantee','invoice','special']
-        this.$nextTick(() =>{
-            this.scroll = new BScroll(this.$refs.seller,{
-                click:true
-            })
-        })
     },
     computed:{
         favoriteText(){
             return this.favorite?'已收藏':'未收藏'
         }   
+    },
+    methods:{
+        toggleFavorite(){
+            this.favorite = !this.favorite
+        },
+        _initScroll(){
+            if(!this.scroll){
+                this.$nextTick(() =>{
+                    this.scroll = new BScroll(this.$refs.seller,{
+                        click:true,
+                        eventPassthrough:'vertical'
+                    })
+                })
+            }else{
+                this.scroll.refresh()
+            }
+        },
+        _initPics(){
+            if(this.seller.pics){
+                let picWidth = 120 
+                let margin = 6
+                let width = (picWidth+margin)*this.seller.pics.length-margin
+                this.$refs.piclist.style.width=width 
+                if(!this.pics){
+                    this.pics=new BScroll(this.$refs.picswrapper,{
+                        eventPassthrough:'vertical'
+                    })
+                }else{
+                    this.pics.refresh()
+                }
+            }
+        }
     }
 
 }
@@ -164,8 +205,10 @@ export default {
                 display block
                 font-size 24px 
                 line-height:24px 
-                color:rgb(240,20,20)
+                color:#d4d6d9
                 margin-bottom 4px 
+                &.active
+                  color:rgb(240,20,20)  
             .text 
                 display block    
                 font-size 10px 
