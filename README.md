@@ -29,9 +29,9 @@ npm run build --report
 ```
 ###  图片预览
 ![我是图片](https://upload-images.jianshu.io/upload_images/3995692-d920c42c1e0daa28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/394/format/webp)
-(https://upload-images.jianshu.io/upload_images/3995692-08ac1c8ab7decbdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/375/format/webp)
-(https://upload-images.jianshu.io/upload_images/3995692-d9d5fd6f171aae69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/381/format/webp)
-(https://upload-images.jianshu.io/upload_images/3995692-d24a21129cef4b37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/372/format/webp)
+![我是图片](https://upload-images.jianshu.io/upload_images/3995692-08ac1c8ab7decbdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/375/format/webp)
+![我是图片](https://upload-images.jianshu.io/upload_images/3995692-d9d5fd6f171aae69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/381/format/webp)
+![我是图片](https://upload-images.jianshu.io/upload_images/3995692-d24a21129cef4b37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/372/format/webp)
 
 ## 在开发过程遇到的一个让人烦躁的问题
 > 在商家页面的商家实景图片那里   使用better-scroll的横向滚动  
