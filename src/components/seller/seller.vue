@@ -49,9 +49,9 @@
             <split></split>
             <div class="pics">
                 <p class="title">商家实景</p>
-                <div class="pics-wrapper" ref="picswrapper">
-                    <ul class="pics-list" ref="piclist">
-                        <li class="pics-item" v-for="(pic,index) in seller.pics" :key="index">
+                <div class="pics-wrapper" >
+                    <ul class="pics-list" ref="picswrapper" >
+                        <li ref="piclist" class="pics-item" v-for="(pic,index) in seller.pics" :key="index">
                             <img :src="pic" width="120" height="90">
                         </li>
                     </ul>
@@ -118,8 +118,7 @@ export default {
             if(!this.scroll){
                 this.$nextTick(() =>{
                     this.scroll = new BScroll(this.$refs.seller,{
-                        click:true,
-                        eventPassthrough:'vertical'
+                        click:true
                     })
                 })
             }else{
@@ -134,6 +133,8 @@ export default {
                 this.$refs.piclist.style.width=width 
                 if(!this.pics){
                     this.pics=new BScroll(this.$refs.picswrapper,{
+                        click:true,
+                        scrollX:true,
                         eventPassthrough:'vertical'
                     })
                 }else{

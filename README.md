@@ -70,6 +70,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
                 this.$refs.piclist.style.width=width 
                 if(!this.pics){
                     this.pics=new BScroll(this.$refs.picswrapper,{
+                        click:true,
+                        scrollX:true,
                         eventPassthrough:'vertical'
                     })
                 }else{
@@ -81,4 +83,3 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 ```    
->> 我这样做了还是不能滚动  改用swiper

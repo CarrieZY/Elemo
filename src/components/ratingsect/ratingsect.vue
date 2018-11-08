@@ -71,14 +71,14 @@ export default {
             }
             this.selectType=type
             //子组件告诉父组件的变化
-            this.$dispatch('ratingtype.select',type)
+            this.$nextTick('ratingtype.select',type)
         },
         toggleContent(event){
            if(!event._constructed){
                 return
             } 
             this.onlyContent= !this.onlyContent
-            this.$dispatch('content.toggle',this.onlyContent)
+            this.$nextTick('content.toggle',this.onlyContent)
         }
     }
 }

@@ -148,7 +148,7 @@ export default {
 @import '~common/stylus/mixin.styl'
 .shopcart
   position fixed
-  z-index:103
+  z-index 50
   left:0
   bottom:0
   width 100%

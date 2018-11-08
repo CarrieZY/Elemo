@@ -52,7 +52,7 @@ export default {
   .minus
     padding 6px
     transition  all 0.4s linear 
-    &.move-enter-active
+    &.move-enter-active,.&.move-leave-active
         opacity :1
         transform translate3d(0,0,0)
     .inner

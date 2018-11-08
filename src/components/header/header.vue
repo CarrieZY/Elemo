@@ -208,7 +208,7 @@ export default {
             left:0
         .detail
             position fixed
-            z-index:105
+            z-index:100
             width:100%
             height:100%
             overflow auto 
